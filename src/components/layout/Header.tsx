@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { BellIcon, MenuIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -22,7 +21,9 @@ import {
   LinkInBioIcon,
   LogoIcon,
   MediaKitIcon,
+  NotificationIcon,
   MessageIcon,
+  MenuIcon,
   RevenueIcon,
   StoreIcon,
 } from "../reusable/Icons";
@@ -169,7 +170,7 @@ export function Header({ className }: HeaderProps) {
         {/* Right Side Icons */}
         <div className="flex items-center gap-4">
           <Button variant="ghost" size="icon" className="text-gray-500">
-            <BellIcon className="h-5 w-5" />
+            <NotificationIcon />
           </Button>
 
           <Button variant="ghost" size="icon" className="text-gray-500">
@@ -178,7 +179,7 @@ export function Header({ className }: HeaderProps) {
 
           <Avatar className="h-8 w-8">
             <AvatarFallback className="bg-gray-800 text-white text-xs">
-              OI
+              OJ
             </AvatarFallback>
           </Avatar>
 
@@ -190,7 +191,7 @@ export function Header({ className }: HeaderProps) {
                 size="icon"
                 className="md:hidden text-gray-500"
               >
-                <MenuIcon className="h-5 w-5" />
+                <MenuIcon />
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-64">
