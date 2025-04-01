@@ -10,7 +10,7 @@ export function MainLayout({ children }: MainLayoutProps) {
     <div className="flex h-screen bg-white">
       <div className="flex flex-col flex-1 overflow-hidden">
         <Header />
-        <main className="flex-1 overflow-auto px-8 py-6">{children}</main>
+        <main className="flex-1 px-8 py-6 max-w-7xl mx-auto">{children}</main>
       </div>
     </div>
   );

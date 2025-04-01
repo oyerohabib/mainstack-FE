@@ -1,5 +1,4 @@
-import { InfoIcon } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -18,23 +17,20 @@ export function BalanceCard({
 }: BalanceCardProps) {
   return (
     <Card className={cn("border-none shadow-none", className)}>
-      <CardHeader className="p-0 pb-2 space-y-0 flex flex-row justify-between items-center">
+      <CardHeader className="p-0 pb-2 space-y-0 flex flex-row gap-16 items-center">
         <CardTitle className="text-sm font-normal text-gray-500">
           {title}
+          <div className="text-2xl font-bold text-black">{amount}</div>
         </CardTitle>
-        <InfoIcon className="h-4 w-4 text-gray-400" />
-      </CardHeader>
-      <CardContent className="p-0 space-y-2">
-        <div className="text-2xl font-bold">{amount}</div>
         {showWithdraw && (
           <Button
             variant="default"
-            className="rounded-full bg-gray-900 hover:bg-gray-800 px-8"
+            className="rounded-full bg-gray-900 hover:bg-gray-800 px-10 py-6"
           >
             Withdraw
           </Button>
         )}
-      </CardContent>
+      </CardHeader>
     </Card>
   );
 }
