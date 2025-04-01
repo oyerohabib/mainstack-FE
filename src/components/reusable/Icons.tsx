@@ -150,9 +150,10 @@ export function MessageIcon() {
   );
 }
 
-export function MenuIcon() {
+export function MenuIcon({ className }: { className?: string }) {
   return (
     <svg
+      className={className}
       width="18"
       height="12"
       viewBox="0 0 18 12"
