@@ -1,10 +1,10 @@
 import { MainLayout } from "@/components/layout/MainLayout";
 import { BalanceCard } from "@/components/dashboard/BalanceCard";
-import { RevenueChart } from "@/components/dashboard/RevenueChart";
 import {
   TransactionList,
   Transaction,
 } from "@/components/dashboard/TransactionList";
+import Chart from "@/components/dashboard/Chart";
 
 export function Dashboard() {
   const transactions: Transaction[] = [
@@ -75,20 +75,22 @@ export function Dashboard() {
 
   return (
     <MainLayout>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-        <div>
+      <div className="flex flex-col md:flex-row md:gap-10 xl:gap-28 gap-6 mb-8 w-full">
+        <div id="chart" className="md:w-3/5 lg:w-4/6 xl:w-3/4">
           <BalanceCard
             title="Available Balance"
             amount="USD 120,500.00"
             showWithdraw={true}
           />
-          <RevenueChart />
+          <div className="max-h-[300px] mt-8">
+            <Chart />
+          </div>
         </div>
-        <div className="space-y-6">
-          <BalanceCard title="Ledger Balance" amount="USD 0.00" />
-          <BalanceCard title="Total Payout" amount="USD 55,080.00" />
-          <BalanceCard title="Total Revenue" amount="USD 175,580.00" />
-          <BalanceCard title="Pending Payout" amount="USD 0.00" />
+        <div id="balance" className="md:w-2/5 lg:w-2/6 xl:w-1/4">
+          <BalanceCard title="Ledger Balance" amount="USD 0.00" infoIcon />
+          <BalanceCard title="Total Payout" amount="USD 55,080.00" infoIcon />
+          <BalanceCard title="Total Revenue" amount="USD 175,580.00" infoIcon />
+          <BalanceCard title="Pending Payout" amount="USD 0.00" infoIcon />
         </div>
       </div>
 
