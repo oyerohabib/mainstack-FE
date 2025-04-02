@@ -6,7 +6,7 @@ import {
 } from "@/components/dashboard/TransactionList";
 import Chart from "@/components/dashboard/Chart";
 
-export function Dashboard() {
+export function Revenue() {
   const transactions: Transaction[] = [
     {
       id: "1",

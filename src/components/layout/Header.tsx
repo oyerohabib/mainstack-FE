@@ -27,6 +27,7 @@ import {
   RevenueIcon,
   StoreIcon,
 } from "../reusable/Icons";
+import { Link, useLocation } from "react-router-dom";
 
 interface NavItem {
   label: string;
@@ -41,13 +42,34 @@ interface HeaderProps {
 
 export function Header({ className }: HeaderProps) {
   const [appsDropdownOpen, setAppsDropdownOpen] = useState(false);
+  const location = useLocation();
 
-  // Navigation items
+  // Navigation items with dynamic active state
   const navItems: NavItem[] = [
-    { label: "Home", href: "/", icon: <HomeIcon /> },
-    { label: "Analytics", href: "/analytics", icon: <AnalyticsIcon /> },
-    { label: "Revenue", href: "/revenue", icon: <RevenueIcon />, active: true },
-    { label: "CRM", href: "/crm", icon: <CRMIcon /> },
+    {
+      label: "Home",
+      href: "/",
+      icon: <HomeIcon />,
+      active: location.pathname === "/",
+    },
+    {
+      label: "Analytics",
+      href: "/analytics",
+      icon: <AnalyticsIcon />,
+      active: location.pathname === "/analytics",
+    },
+    {
+      label: "Revenue",
+      href: "/revenue",
+      icon: <RevenueIcon />,
+      active: location.pathname === "/revenue",
+    },
+    {
+      label: "CRM",
+      href: "/crm",
+      icon: <CRMIcon />,
+      active: location.pathname === "/crm",
+    },
   ];
 
   // Apps dropdown items
@@ -109,10 +131,10 @@ export function Header({ className }: HeaderProps) {
                 )}
                 asChild
               >
-                <a href={item.href}>
+                <Link to={item.href}>
                   {item.icon}
                   <span>{item.label}</span>
-                </a>
+                </Link>
               </Button>
             ))}
 
@@ -213,10 +235,10 @@ export function Header({ className }: HeaderProps) {
                       )}
                       asChild
                     >
-                      <a href={item.href} className="flex items-center gap-3">
+                      <Link to={item.href} className="flex items-center gap-3">
                         {item.icon}
                         <span>{item.label}</span>
-                      </a>
+                      </Link>
                     </Button>
                   ))}
 
