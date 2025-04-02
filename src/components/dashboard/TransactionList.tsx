@@ -61,19 +61,15 @@ export function TransactionList({ transactions }: TransactionListProps) {
               <div
                 className={cn(
                   "size-12 rounded-full flex items-center justify-center",
-                  transaction.status === "pending"
-                    ? "bg-[#F9E3E0]"
-                    : transaction.status === "successful"
-                    ? "bg-[#F9E3E0]"
-                    : "bg-[#E3FCF2]"
+                  transaction.type === "outgoing"
+                    ? "bg-[#E3FCF2]"
+                    : "bg-[#F9E3E0]"
                 )}
               >
-                {transaction.status === "pending" ? (
-                  <TransactionUp />
-                ) : transaction.status === "successful" ? (
-                  <TransactionUp />
-                ) : (
+                {transaction.type === "outgoing" ? (
                   <TransactionDown />
+                ) : (
+                  <TransactionUp />
                 )}
               </div>
               <div>
