@@ -36,7 +36,7 @@ export function BalanceCard({
         {showWithdraw && (
           <Button
             variant="default"
-            className="rounded-full bg-gray-900 hover:bg-gray-800 px-10 py-6"
+            className="rounded-full bg-gray-900 hover:bg-gray-800 px-10 py-6 cursor-pointer"
           >
             Withdraw
           </Button>
