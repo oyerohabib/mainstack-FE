@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { ArrowRightIcon } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -17,15 +17,15 @@ import {
   ChevronDownIcon,
   CRMIcon,
   HomeIcon,
-  InvoicingIcon,
-  LinkInBioIcon,
+  Invoicing,
+  LinkInBio,
   LogoIcon,
-  MediaKitIcon,
+  MediaKit,
   NotificationIcon,
   MessageIcon,
   MenuIcon,
   RevenueIcon,
-  StoreIcon,
+  Store,
 } from "../reusable/Icons";
 import { Link, useLocation } from "react-router-dom";
 
@@ -81,34 +81,34 @@ export function Header({ className }: HeaderProps) {
     {
       label: "Link in Bio",
       description: "Manage your Link in Bio",
-      icon: <LinkInBioIcon />,
+      icon: <LinkInBio className="size-5" />,
     },
     {
       label: "Store",
       description: "Manage your Store activities",
-      icon: <StoreIcon />,
+      icon: <Store className="size-5" />,
     },
     {
       label: "Media Kit",
       description: "Manage your Media Kit",
-      icon: <MediaKitIcon />,
+      icon: <MediaKit className="size-5" />,
     },
     {
       label: "Invoicing",
       description: "Manage your Invoices",
-      icon: <InvoicingIcon />,
+      icon: <Invoicing className="size-5" />,
     },
     {
       label: "Bookings",
       description: "Manage your Bookings",
-      icon: <BookingsIcon />,
+      icon: <BookingsIcon className="size-5" />,
     },
   ];
 
   return (
     <div className="p-4">
       <header
-        className={cn("shadow bg-white p-4 px-6 rounded-full", className)}
+        className={cn("shadow bg-white p-3 px-6 rounded-full", className)}
       >
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-6">
@@ -124,7 +124,7 @@ export function Header({ className }: HeaderProps) {
                 key={item.label}
                 variant="ghost"
                 className={cn(
-                  "flex items-center gap-2 rounded-full p-6 font-semibold",
+                  "flex items-center gap-2 rounded-full p-4",
                   item.active
                     ? "bg-black text-white hover:bg-black/90 hover:text-white"
                     : "text-gray-700 hover:bg-gray-100"
@@ -147,14 +147,23 @@ export function Header({ className }: HeaderProps) {
                 <Button
                   variant="ghost"
                   className={cn(
-                    "flex items-center gap-2 rounded-full p-6 font-semibold",
+                    "flex items-center h-auto rounded-full",
                     appsDropdownOpen
-                      ? "bg-gray-100"
+                      ? "bg-black text-white p-2"
                       : "text-gray-700 hover:bg-gray-100"
                   )}
                 >
                   <AppsIcon />
-                  <span>Apps</span>
+                  {appsDropdownOpen ? (
+                    <>
+                      <span className="">Apps </span>{" "}
+                      <span className="border-l border-gray-500 pl-4">
+                        Link in Bio
+                      </span>
+                    </>
+                  ) : (
+                    <span>Apps</span>
+                  )}
                   <ChevronDownIcon
                     className={cn(
                       "h-4 w-4 transition-transform",
@@ -163,20 +172,26 @@ export function Header({ className }: HeaderProps) {
                   />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="w-72 p-2">
+              <DropdownMenuContent
+                align="start"
+                sideOffset={20}
+                className="w-[360px] p-2"
+              >
                 {appsItems.map((item) => (
                   <DropdownMenuItem
                     key={item.label}
-                    className="flex items-center gap-3 p-3 cursor-pointer group"
+                    className="flex items-center gap-3 p-3 cursor-pointer group hover:shadow-sm hover:!bg-transparent"
                   >
-                    <div className="flex-shrink-0 mt-1">{item.icon}</div>
+                    <div className="flex-shrink-0 mt-1 border p-2 rounded-lg">
+                      {item.icon}
+                    </div>
                     <div className="flex flex-col">
                       <span className="font-medium">{item.label}</span>
                       <span className="text-xs text-gray-500">
                         {item.description}
                       </span>
                     </div>
-                    <ArrowRightIcon className="ml-auto h-4 w-4 text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+                    <ChevronRight className="ml-auto h-4 w-4 text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                   </DropdownMenuItem>
                 ))}
               </DropdownMenuContent>

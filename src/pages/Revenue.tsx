@@ -4,7 +4,7 @@ import {
   TransactionList,
   Transaction,
 } from "@/components/dashboard/TransactionList";
-import Chart from "@/components/dashboard/Chart";
+import ChartOld from "@/components/dashboard/ChartOld";
 
 export function Revenue() {
   const transactions: Transaction[] = [
@@ -74,17 +74,17 @@ export function Revenue() {
   return (
     <MainLayout>
       <div className="flex flex-col md:flex-row md:gap-10 xl:gap-28 gap-6 mb-8 w-full">
-        <div id="chart" className="md:w-3/5 lg:w-4/6 xl:w-3/4">
+        <div id="chart" className="md:w-[70%] lg:w-4/6 xl:w-3/4">
           <BalanceCard
             title="Available Balance"
             amount="USD 120,500.00"
             showWithdraw={true}
           />
-          <div className="max-h-[300px] mt-8">
-            <Chart />
+          <div className="max-h-[300px] max-w-[93%] xl:max-w-full ml-auto mt-8">
+            <ChartOld />
           </div>
         </div>
-        <div id="balance" className="md:w-2/5 lg:w-2/6 xl:w-1/4">
+        <div id="balance" className="md:w-[30%] lg:w-2/6 xl:w-1/4">
           <BalanceCard title="Ledger Balance" amount="USD 0.00" infoIcon />
           <BalanceCard title="Total Payout" amount="USD 55,080.00" infoIcon />
           <BalanceCard title="Total Revenue" amount="USD 175,580.00" infoIcon />
