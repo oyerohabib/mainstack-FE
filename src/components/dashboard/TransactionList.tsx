@@ -1,12 +1,16 @@
-import { ArrowUpRight, ArrowDownRight, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "../ui/button";
-import { ExportIcon } from "../reusable/Icons";
+import {
+  ChevronDownIcon,
+  ExportIcon,
+  TransactionDown,
+  TransactionUp,
+} from "../reusable/Icons";
 
 export interface Transaction {
   id: string;
   title: string;
-  person: string;
+  person?: string;
   amount: string;
   date: string;
   status: "completed" | "pending" | "successful";
@@ -17,70 +21,30 @@ interface TransactionListProps {
   transactions: Transaction[];
 }
 
-// function TransactionIcon({
-//   status,
-//   type,
-// }: {
-//   status: Transaction["status"];
-//   type: Transaction["type"];
-// }) {
-//   if (status === "completed") {
-//     return (
-//       <div className="h-8 w-8 rounded-full bg-green-50 flex items-center justify-center">
-//         <Check className="h-4 w-4 text-green-500" />
-//       </div>
-//     );
-//   }
-
-//   if (status === "pending") {
-//     return (
-//       <div className="h-8 w-8 rounded-full bg-amber-50 flex items-center justify-center">
-//         <ArrowUpRight className="h-4 w-4 text-amber-500" />
-//       </div>
-//     );
-//   }
-
-//   if (status === "successful") {
-//     return (
-//       <div className="h-8 w-8 rounded-full bg-red-50 flex items-center justify-center">
-//         <ArrowDownRight className="h-4 w-4 text-red-500" />
-//       </div>
-//     );
-//   }
-
-//   return null;
-// }
-
 export function TransactionList({ transactions }: TransactionListProps) {
   return (
     <div className="space-y-4">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row gap-6 sm:gap-4 sm:items-center justify-between border-b pb-6">
         <div>
           <h2 className="text-xl font-bold">24 Transactions</h2>
           <p className="text-sm text-gray-500">
             Your transactions for the last 7 days
           </p>
         </div>
-        <div className="flex gap-2">
-          <Button variant="outline" size="sm" className="gap-2">
+        <div className="flex gap-3">
+          <Button
+            variant="ghost"
+            size="xl"
+            className="gap-2 rounded-full bg-gray-100 cursor-pointer"
+          >
             Filter
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M6 9l6 6 6-6"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+            <ChevronDownIcon />
           </Button>
-          <Button variant="outline" size="sm" className="gap-2">
+          <Button
+            variant="ghost"
+            size="xl"
+            className="gap-2 rounded-full bg-gray-100 cursor-pointer"
+          >
             Export list
             <ExportIcon />
           </Button>
@@ -96,24 +60,24 @@ export function TransactionList({ transactions }: TransactionListProps) {
             <div className="flex items-center gap-3">
               <div
                 className={cn(
-                  "h-8 w-8 rounded-full flex items-center justify-center",
+                  "size-12 rounded-full flex items-center justify-center",
                   transaction.status === "pending"
-                    ? "bg-amber-50"
+                    ? "bg-[#F9E3E0]"
                     : transaction.status === "successful"
-                    ? "bg-red-50"
-                    : "bg-green-50"
+                    ? "bg-[#F9E3E0]"
+                    : "bg-[#E3FCF2]"
                 )}
               >
                 {transaction.status === "pending" ? (
-                  <ArrowUpRight className="h-4 w-4 text-amber-500" />
+                  <TransactionUp />
                 ) : transaction.status === "successful" ? (
-                  <ArrowDownRight className="h-4 w-4 text-red-500" />
+                  <TransactionUp />
                 ) : (
-                  <Check className="h-4 w-4 text-green-500" />
+                  <TransactionDown />
                 )}
               </div>
               <div>
-                <div className="font-medium">{transaction.title}</div>
+                <div className="font-medium mb-1">{transaction.title}</div>
                 <div className="text-sm text-gray-500">
                   {transaction.person}
                 </div>
@@ -126,7 +90,7 @@ export function TransactionList({ transactions }: TransactionListProps) {
               </div>
             </div>
             <div className="text-right">
-              <div className="font-medium">{transaction.amount}</div>
+              <div className="font-bold">{transaction.amount}</div>
               <div className="text-sm text-gray-500">{transaction.date}</div>
             </div>
           </div>
