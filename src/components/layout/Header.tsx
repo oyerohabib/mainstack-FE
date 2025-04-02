@@ -28,6 +28,7 @@ import {
   Store,
 } from "../reusable/Icons";
 import { Link, useLocation } from "react-router-dom";
+import { useUserProfile } from "@/hooks/useQueries";
 
 interface NavItem {
   label: string;
@@ -43,6 +44,12 @@ interface HeaderProps {
 export function Header({ className }: HeaderProps) {
   const [appsDropdownOpen, setAppsDropdownOpen] = useState(false);
   const location = useLocation();
+
+  const { data: user } = useUserProfile();
+
+  const userInitials = user
+    ? `${user.first_name.charAt(0)}${user.last_name.charAt(0)}`
+    : "U";
 
   // Navigation items with dynamic active state
   const navItems: NavItem[] = [
@@ -216,13 +223,23 @@ export function Header({ className }: HeaderProps) {
               <MessageIcon />
             </Button>
 
-            <div className="bg-[#EFF1F6] rounded-full pl-1 pr-2 py-1 flex items-center justify-center gap-2 cursor-pointer">
-              <Avatar className="h-8 w-8">
-                <AvatarFallback className="bg-gray-800 text-white text-xs">
-                  OJ
-                </AvatarFallback>
-              </Avatar>
-              <MenuIcon className={"hidden md:block"} />
+            <div className="bg-[#EFF1F6] rounded-full pl-1 pr-2 py-1 cursor-pointer">
+              <DropdownMenu>
+                <DropdownMenuTrigger className=" flex items-center justify-center gap-2">
+                  <Avatar className="h-8 w-8 border">
+                    <AvatarFallback className="bg-gray-800 text-white text-xs">
+                      {userInitials}
+                    </AvatarFallback>
+                  </Avatar>
+                  <MenuIcon className={"hidden md:block"} />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent sideOffset={20} align="end">
+                  <DropdownMenuItem className="flex flex-col">
+                    <span className="font-medium">{`${user?.first_name} ${user?.last_name}`}</span>
+                    <span className="text-sm text-gray-500">{user?.email}</span>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
 
             {/* Mobile Menu Button */}
