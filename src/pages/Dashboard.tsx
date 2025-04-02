@@ -38,7 +38,6 @@ export function Dashboard() {
     {
       id: "4",
       title: "Cash withdrawal",
-      person: "Successful",
       amount: "USD 3000.33",
       date: "Apr 01,2022",
       status: "successful",
@@ -47,7 +46,7 @@ export function Dashboard() {
     {
       id: "5",
       title: "Support my outreach",
-      person: "Shawn Kane",
+      person: "Shawn kane",
       amount: "USD 400",
       date: "Apr 02,2022",
       status: "completed",
@@ -56,7 +55,6 @@ export function Dashboard() {
     {
       id: "6",
       title: "Cash withdrawal",
-      person: "Pending",
       amount: "USD 1004.44",
       date: "Apr 01,2022",
       status: "pending",
