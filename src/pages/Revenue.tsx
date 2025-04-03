@@ -45,6 +45,7 @@ export function Revenue() {
               title="Available Balance"
               amount={formatCurrency(walletBalance?.balance || 0)}
               showWithdraw={true}
+              testId="available-balance-card"
             />
           )}
           <div className="max-h-[300px] max-w-[93%] xl:max-w-full ml-auto mt-8">
@@ -64,12 +65,12 @@ export function Revenue() {
               <BalanceCard
                 title="Ledger Balance"
                 amount={formatCurrency(walletBalance?.ledger_balance || 0)}
-                infoIcon
+                testId="ledger-balance-card"
               />
               <BalanceCard
                 title="Total Payout"
                 amount={formatCurrency(walletBalance?.total_payout || 0)}
-                infoIcon
+                testId="total-payout-card"
               />
               <BalanceCard
                 title="Total Revenue"
