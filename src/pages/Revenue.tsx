@@ -1,20 +1,67 @@
+import { useState } from "react";
 import { MainLayout } from "@/components/layout/MainLayout";
 import { BalanceCard } from "@/components/dashboard/BalanceCard";
 import { TransactionList } from "@/components/dashboard/TransactionList";
+import {
+  TransactionFilter,
+  FilterState,
+} from "@/components/dashboard/TransactionFilter";
+import { NoTransactions } from "@/components/dashboard/NoTransactions";
 import ChartOld from "@/components/dashboard/ChartOld";
 import { useTransactions, useWalletBalance } from "@/hooks/useQueries";
 import { Skeleton } from "@/components/ui/skeleton";
 import { formatCurrency } from "@/lib/utils";
+import { isWithinInterval, parseISO } from "date-fns";
 
 export function Revenue() {
+  const [filters, setFilters] = useState<FilterState>({
+    dateRange: { from: undefined, to: undefined },
+    transactionTypes: [],
+    transactionStatus: [],
+  });
+
   const { data: transactions, isLoading: isLoadingTransactions } =
     useTransactions();
   const { data: walletBalance, isLoading: isLoadingWallet } =
     useWalletBalance();
 
+  // Apply filters to transactions
+  const filteredTransactions = transactions?.filter((transaction) => {
+    // Date range filter
+    if (filters.dateRange.from && filters.dateRange.to) {
+      const transactionDate = parseISO(transaction.date);
+      if (
+        !isWithinInterval(transactionDate, {
+          start: filters.dateRange.from,
+          end: filters.dateRange.to,
+        })
+      ) {
+        return false;
+      }
+    }
+
+    // Transaction type filter
+    if (filters.transactionTypes.length > 0) {
+      const type = transaction.type === "deposit" ? "store" : transaction.type;
+      if (!filters.transactionTypes.includes(type)) {
+        return false;
+      }
+    }
+
+    // Transaction status filter
+    if (
+      filters.transactionStatus.length > 0 &&
+      !filters.transactionStatus.includes(transaction.status)
+    ) {
+      return false;
+    }
+
+    return true;
+  });
+
   // Format transactions for the TransactionList component
   const formattedTransactions =
-    transactions?.map((transaction) => ({
+    filteredTransactions?.map((transaction) => ({
       id:
         transaction?.payment_reference || transaction.amount + transaction.date,
       title:
@@ -33,6 +80,18 @@ export function Revenue() {
         | "incoming"
         | "outgoing",
     })) || [];
+
+  const handleFilterChange = (newFilters: FilterState) => {
+    setFilters(newFilters);
+  };
+
+  const handleClearFilters = () => {
+    setFilters({
+      dateRange: { from: undefined, to: undefined },
+      transactionTypes: [],
+      transactionStatus: [],
+    });
+  };
 
   return (
     <MainLayout>
@@ -89,10 +148,19 @@ export function Revenue() {
         </div>
       </div>
 
+      <div className="mb-4">
+        <TransactionFilter
+          onFilterChange={handleFilterChange}
+          onClearFilters={handleClearFilters}
+        />
+      </div>
+
       {isLoadingTransactions ? (
         <Skeleton className="h-96 w-full rounded-lg" />
-      ) : (
+      ) : formattedTransactions.length > 0 ? (
         <TransactionList transactions={formattedTransactions} />
+      ) : (
+        <NoTransactions onClearFilter={handleClearFilters} />
       )}
     </MainLayout>
   );
