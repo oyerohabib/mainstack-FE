@@ -66,11 +66,13 @@ export function Revenue() {
                 title="Ledger Balance"
                 amount={formatCurrency(walletBalance?.ledger_balance || 0)}
                 testId="ledger-balance-card"
+                infoIcon
               />
               <BalanceCard
                 title="Total Payout"
                 amount={formatCurrency(walletBalance?.total_payout || 0)}
                 testId="total-payout-card"
+                infoIcon
               />
               <BalanceCard
                 title="Total Revenue"
