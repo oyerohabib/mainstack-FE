@@ -6,12 +6,14 @@
   ],
   "compilerOptions": {
     "baseUrl": ".",
+    "jsx": "react-jsx",
     "paths": {
       "@/*": ["./src/*"]
     },
+    "types": ["node", "jest", "@testing-library/jest-dom"],
     "typeRoots": [
       "./node_modules/@types",
-      "./src/types"
+      "./src"
     ]
   }
 }
