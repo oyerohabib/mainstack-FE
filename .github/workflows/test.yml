@@ -17,7 +17,7 @@ jobs:
         with:
           node-version: "18.x"
           cache: "npm"
-      - run: npm ci
+      - run: npm ci --legacy-peer-deps
       - run: npm test
       # - name: Upload coverage reports
       #   uses: codecov/codecov-action@v3
