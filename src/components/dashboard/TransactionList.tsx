@@ -26,7 +26,9 @@ export function TransactionList({ transactions }: TransactionListProps) {
     <div className="space-y-4">
       <div className="flex flex-col sm:flex-row gap-6 sm:gap-4 sm:items-center justify-between border-b pb-6">
         <div>
-          <h2 className="text-xl font-bold">24 Transactions</h2>
+          <h2 className="text-xl font-bold">
+            {transactions?.length || 0} Transactions
+          </h2>
           <p className="text-sm text-gray-500">
             Your transactions for the last 7 days
           </p>
