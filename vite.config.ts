@@ -15,4 +15,9 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ["@canvasjs/charts"],
   },
+  build: {
+    commonjsOptions: {
+      transformMixedEsModules: true,
+    },
+  },
 });
