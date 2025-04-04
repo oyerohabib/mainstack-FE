@@ -1,4 +1,4 @@
-import { Card, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { InfoIcon } from "../reusable/Icons";
@@ -26,7 +26,7 @@ export function BalanceCard({
 }: BalanceCardProps) {
   return (
     <div data-testid={testId}>
-      <Card className={cn("border-none shadow-none py-4", className)}>
+      <Card className={cn("border-none shadow-none py-4 gap-0", className)}>
         <CardHeader
           className={`p-0 pb-2 space-y-0 flex flex-row gap-16 ${
             infoIcon ? "justify-between" : "items-center"
@@ -34,14 +34,6 @@ export function BalanceCard({
         >
           <CardTitle className="text-sm font-normal text-gray-500 gap-2 flex flex-col">
             {title}
-            <div
-              className={cn(
-                "text-xl md:text-[28px] font-bold text-black",
-                amountClass
-              )}
-            >
-              {amount}
-            </div>
           </CardTitle>
           {showWithdraw && (
             <Button
@@ -57,6 +49,16 @@ export function BalanceCard({
             </div>
           )}
         </CardHeader>
+        <CardContent className="px-0">
+          <div
+            className={cn(
+              "text-2xl md:text-[28px] font-bold text-black",
+              amountClass
+            )}
+          >
+            {amount}
+          </div>
+        </CardContent>
       </Card>
     </div>
   );

@@ -8,6 +8,7 @@ import { useTransactions, useWalletBalance } from "@/hooks/useQueries";
 import { Skeleton } from "@/components/ui/skeleton";
 import { formatCurrency } from "@/lib/utils";
 import { isWithinInterval, parseISO } from "date-fns";
+import { AvailableBalance } from "@/components/dashboard/AvailableBalance";
 
 export function Revenue() {
   const [filters, setFilters] = useState<FilterState>({
@@ -96,15 +97,15 @@ export function Revenue() {
           {isLoadingWallet ? (
             <Skeleton className="h-32 w-full rounded-lg" />
           ) : (
-            <BalanceCard
+            <AvailableBalance
               title="Available Balance"
               amount={formatCurrency(walletBalance?.balance || 0)}
               showWithdraw={true}
               testId="available-balance-card"
-              amountClass="md:text-4xl"
+              amountClass="text-2xl md:text-4xl"
             />
           )}
-          <div className="max-h-[300px] max-w-[93%] xl:max-w-full ml-auto mt-8">
+          <div className="max-h-[300px] w-full sm:max-w-[93%] xl:w-full ml-auto mt-8">
             <ChartOld />
           </div>
         </div>

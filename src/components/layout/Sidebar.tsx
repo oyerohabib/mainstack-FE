@@ -8,7 +8,7 @@ import {
 
 const Sidebar = () => {
   return (
-    <div className="absolute top-[15%] md:top-[20%] [@media(min-width:1380px)]:top-[35%] left-4 px-3 py-4 max-h-dvh hidden [@media(min-width:540px)]:flex flex-col gap-6 shadow rounded-full">
+    <div className="absolute sm:top-[30%] [@media(min-width:1380px)]:top-[35%] left-4 px-3 py-4 max-h-dvh hidden sm:flex flex-col gap-6 shadow rounded-full">
       <TooltipProvider>
         <Tooltip>
           <TooltipTrigger>

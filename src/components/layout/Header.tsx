@@ -37,11 +37,7 @@ interface NavItem {
   active?: boolean;
 }
 
-interface HeaderProps {
-  className?: string;
-}
-
-export function Header({ className }: HeaderProps) {
+export function Header() {
   const [appsDropdownOpen, setAppsDropdownOpen] = useState(false);
   const location = useLocation();
 
@@ -113,10 +109,8 @@ export function Header({ className }: HeaderProps) {
   ];
 
   return (
-    <div className="p-4">
-      <header
-        className={cn("shadow bg-white p-3 px-6 rounded-full", className)}
-      >
+    <div className="fixed top-0 left-0 right-0 z-50 p-4 bg-background">
+      <header className={"shadow bg-white p-3 px-6 rounded-full"}>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-6">
             <div className="flex items-center">
