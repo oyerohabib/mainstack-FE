@@ -1,7 +1,29 @@
+@font-face {
+  font-family: Doto;
+  font-weight: 400;
+  src: url("/fonts/Degular/DegularDisplay-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: Doto;
+  font-weight: 500;
+  src: url("/fonts/Degular/DegularDisplay-Medium.otf") format("opentype");
+}
+
+@font-face {
+  font-family: Doto;
+  font-weight: 700;
+  src: url("/fonts/Degular/DegularDisplay-Bold.otf") format("opentype");
+}
+
 @import "tailwindcss";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
+
+body {
+  font-family: Doto, sans-serif;
+}
 
 :root {
   --radius: 0.625rem;
@@ -70,6 +92,10 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+}
+
+@theme {
+  --font-doto: Doto, "sans-serif";
 }
 
 @theme inline {
