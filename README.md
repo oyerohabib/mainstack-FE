@@ -1,54 +1,165 @@
-# React + TypeScript + Vite
+# Mainstack Frontend Assessment
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern React application for managing financial transactions and revenue tracking.
 
-Currently, two official plugins are available:
+## Screenshots
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+|                                                   |                                                   |
+| :-----------------------------------------------: | :-----------------------------------------------: |
+| ![Screenshot 1](https://i.imgur.com/IzXJA07.jpeg) | ![Screenshot 2](https://i.imgur.com/RZ7J23u.jpeg) |
 
-## Expanding the ESLint configuration
+## 🚀 Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Transaction Management**
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+  - View all transactions
+  - Filter transactions by:
+    - Date range
+    - Transaction type
+    - Transaction status
+  - Export transaction lists
+  - Real-time transaction updates
+
+- **Revenue Analytics**
+
+  - Total revenue tracking
+  - Wallet balance monitoring
+  - Transaction statistics
+  - Visual data representation
+
+- **User Experience**
+  - Responsive design
+  - Intuitive filtering interface
+  - Clean and modern UI
+  - Real-time updates
+
+## 🛠 Tech Stack
+
+- **Frontend Framework**: React with TypeScript
+- **Styling**: Tailwind CSS
+- **State Management**: React Query
+- **Testing**: Jest & React Testing Library
+- **UI Components**: Shadcn/ui
+- **Date Handling**: date-fns
+- **Icons**: Lucide React
+
+## 🏗 Project Structure
+
+```
+src/
+├── components/
+│   ├── dashboard/
+│   │   ├── BalanceCard.tsx
+│   │   ├── TransactionFilter.tsx
+│   │   ├── TransactionItem.tsx
+│   │   ├── TransactionList.tsx
+│   │   └── NoTransactions.tsx
+│   ├── layout/
+│   └── ui/
+├── hooks/
+│   └── useQueries.ts
+├── lib/
+│   └── utils.ts
+├── pages/
+│   └── Revenue.tsx
+└── tests/
+    └── components/
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🚦 Getting Started
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. **Clone the repository**
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+git clone https://github.com/yourusername/mainstack-frontend
 ```
+
+2. **Install dependencies**
+
+```bash
+npm install
+```
+
+3. **Run development server**
+
+```bash
+npm run dev
+```
+
+4. **Run tests**
+
+```bash
+npm test
+```
+
+## 🧪 Testing
+
+The project includes comprehensive testing:
+
+- Component tests
+- Hook tests
+- Utility function tests
+- Integration tests
+
+Run tests with coverage:
+
+```bash
+npm test -- --coverage
+```
+
+## 📱 Responsive Design
+
+The application is fully responsive and works seamlessly across:
+
+- Desktop
+- Tablet
+- Mobile devices
+
+## 🔄 State Management
+
+- React Query for server state
+- Local state with React hooks
+- Efficient caching and data updates
+
+## 🎨 Styling
+
+- Tailwind CSS for utility-first styling
+- Custom components from Shadcn/ui
+- Consistent theming and design system
+
+## 🔍 Code Quality
+
+- TypeScript for type safety
+- ESLint for code quality
+- Prettier for code formatting
+- Husky for pre-commit hooks
+
+## 📦 Build and Deploy
+
+Build the project:
+
+```bash
+npm run build
+```
+
+Preview the build:
+
+```bash
+npm run preview
+```
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 👥 Authors
+
+- Initial work - [Oyero Habibulah](https://github.com/oyerohabib/)
