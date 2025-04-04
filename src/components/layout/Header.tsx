@@ -26,6 +26,7 @@ import {
   MenuIcon,
   RevenueIcon,
   Store,
+  AppsOpenIcon,
 } from "../reusable/Icons";
 import { Link, useLocation } from "react-router-dom";
 import { useUserProfile } from "@/hooks/useQueries";
@@ -154,7 +155,7 @@ export function Header() {
                       : "text-gray-700 hover:bg-gray-100"
                   )}
                 >
-                  <AppsIcon />
+                  {appsDropdownOpen ? <AppsOpenIcon /> : <AppsIcon />}
                   {appsDropdownOpen ? (
                     <>
                       <span className="">Apps </span>{" "}
