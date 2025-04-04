@@ -2,11 +2,7 @@ import { useState } from "react";
 import { MainLayout } from "@/components/layout/MainLayout";
 import { BalanceCard } from "@/components/dashboard/BalanceCard";
 import { TransactionList } from "@/components/dashboard/TransactionList";
-import {
-  TransactionFilter,
-  FilterState,
-} from "@/components/dashboard/TransactionFilter";
-import { NoTransactions } from "@/components/dashboard/NoTransactions";
+import { FilterState } from "@/components/dashboard/TransactionFilter";
 import ChartOld from "@/components/dashboard/ChartOld";
 import { useTransactions, useWalletBalance } from "@/hooks/useQueries";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -95,7 +91,7 @@ export function Revenue() {
 
   return (
     <MainLayout>
-      <div className="flex flex-col md:flex-row md:gap-10 xl:gap-28 gap-6 mb-8 w-full">
+      <div className="flex flex-col md:flex-row md:gap-10 xl:gap-28 gap-6 mb-8 md:mb-14 lg:mb-20 w-full">
         <div id="chart" className="md:w-[70%] lg:w-4/6 xl:w-3/4">
           {isLoadingWallet ? (
             <Skeleton className="h-32 w-full rounded-lg" />
@@ -148,19 +144,15 @@ export function Revenue() {
         </div>
       </div>
 
-      <div className="mb-4">
-        <TransactionFilter
-          onFilterChange={handleFilterChange}
-          onClearFilters={handleClearFilters}
-        />
-      </div>
-
       {isLoadingTransactions ? (
         <Skeleton className="h-96 w-full rounded-lg" />
-      ) : formattedTransactions.length > 0 ? (
-        <TransactionList transactions={formattedTransactions} />
       ) : (
-        <NoTransactions onClearFilter={handleClearFilters} />
+        <TransactionList
+          transactions={formattedTransactions}
+          onFilterChange={handleFilterChange}
+          onClearFilters={handleClearFilters}
+          showNoTransactions={formattedTransactions.length === 0}
+        />
       )}
     </MainLayout>
   );
