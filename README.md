@@ -45,52 +45,36 @@ A modern React application for managing financial transactions and revenue track
 
 ## 🏗 Project Structure
 
-```
+```markdown
 src/
 ├── components/
-│   ├── dashboard/
-│   │   ├── BalanceCard.tsx
-│   │   ├── TransactionFilter.tsx
-│   │   ├── TransactionItem.tsx
-│   │   ├── TransactionList.tsx
-│   │   └── NoTransactions.tsx
-│   ├── layout/
-│   └── ui/
+│ ├── dashboard/
+│ │ ├── BalanceCard.tsx
+│ │ ├── TransactionFilter.tsx
+│ │ ├── TransactionItem.tsx
+│ │ ├── TransactionList.tsx
+│ │ └── NoTransactions.tsx
+│ ├── layout/
+│ └── ui/
 ├── hooks/
-│   └── useQueries.ts
+│ └── useQueries.ts
 ├── lib/
-│   └── utils.ts
+│ └── utils.ts
 ├── pages/
-│   └── Revenue.tsx
+│ └── Revenue.tsx
 └── tests/
-    └── components/
+└── components/
 ```
 
 ## 🚦 Getting Started
 
-1. **Clone the repository**
+1. **Clone the repository** - git clone <https://github.com/yourusername/mainstack-frontend>
 
-```bash
-git clone https://github.com/yourusername/mainstack-frontend
-```
+2. **Install dependencies** - npm install
 
-2. **Install dependencies**
+3. **Run development server** - npm run dev
 
-```bash
-npm install
-```
-
-3. **Run development server**
-
-```bash
-npm run dev
-```
-
-4. **Run tests**
-
-```bash
-npm test
-```
+4. **Run tests** - npm test
 
 ## 🧪 Testing
 
