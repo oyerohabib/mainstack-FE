@@ -497,9 +497,10 @@ export function ExportIcon() {
   );
 }
 
-export function TransactionUp() {
+export function TransactionUp({ className }: { className?: string }) {
   return (
     <svg
+      className={className}
       width="12"
       height="12"
       viewBox="0 0 12 12"
@@ -508,15 +509,16 @@ export function TransactionUp() {
     >
       <path
         d="M0.25 11.75V4.25H1.08333V10.3333L11.1667 0.25L11.75 0.833333L1.66667 10.9167H7.75V11.75H0.25Z"
-        fill="#961100"
+        fill="currentColor"
       />
     </svg>
   );
 }
 
-export function TransactionDown() {
+export function TransactionDown({ className }: { className?: string }) {
   return (
     <svg
+      className={className}
       width="12"
       height="12"
       viewBox="0 0 12 12"
@@ -525,7 +527,7 @@ export function TransactionDown() {
     >
       <path
         d="M0.999837 11.5833L0.416504 11L10.4998 0.916677H4.4165V0.0833435H11.9165V7.58334H11.0832V1.50001L0.999837 11.5833Z"
-        fill="#075132"
+        fill="currentColor"
       />
     </svg>
   );
