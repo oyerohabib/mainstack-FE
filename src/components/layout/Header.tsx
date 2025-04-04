@@ -131,7 +131,7 @@ export function Header({ className }: HeaderProps) {
                 key={item.label}
                 variant="ghost"
                 className={cn(
-                  "flex items-center gap-2 rounded-full p-4",
+                  "flex items-center gap-2 rounded-full p-4 text-base",
                   item.active
                     ? "bg-black text-white hover:bg-black/90 hover:text-white"
                     : "text-gray-700 hover:bg-gray-100"
@@ -227,7 +227,7 @@ export function Header({ className }: HeaderProps) {
               <DropdownMenu>
                 <DropdownMenuTrigger className=" flex items-center justify-center gap-2">
                   <Avatar className="h-8 w-8 border">
-                    <AvatarFallback className="bg-gray-800 text-white text-xs">
+                    <AvatarFallback className="bg-gray-800 text-white text-sm">
                       {userInitials}
                     </AvatarFallback>
                   </Avatar>

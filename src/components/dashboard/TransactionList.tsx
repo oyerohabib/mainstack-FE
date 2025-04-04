@@ -42,7 +42,7 @@ export function TransactionList({
     <div>
       <div className="flex gap-6 flex-col sm:flex-row items-start sm:items-center justify-between mb-6">
         <div>
-          <h2 className="text-xl font-bold">
+          <h2 className="text-2xl font-bold">
             {transactions?.length || 0} Transactions
           </h2>
           <p className="text-sm text-gray-500">

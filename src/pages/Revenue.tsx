@@ -63,8 +63,8 @@ export function Revenue() {
       title:
         transaction?.metadata?.product_name ||
         transaction?.metadata?.type ||
-        "N/A",
-      person: transaction?.metadata?.name || "N/A",
+        "Cash withdrawal",
+      person: transaction?.metadata?.name,
       amount: formatCurrency(transaction?.amount),
       date: new Date(transaction?.date).toLocaleDateString("en-US", {
         year: "numeric",
@@ -101,6 +101,7 @@ export function Revenue() {
               amount={formatCurrency(walletBalance?.balance || 0)}
               showWithdraw={true}
               testId="available-balance-card"
+              amountClass="md:text-4xl"
             />
           )}
           <div className="max-h-[300px] max-w-[93%] xl:max-w-full ml-auto mt-8">

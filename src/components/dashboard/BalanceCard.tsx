@@ -11,6 +11,7 @@ interface BalanceCardProps {
   infoTitle?: string;
   className?: string;
   testId?: string;
+  amountClass?: string;
 }
 
 export function BalanceCard({
@@ -21,6 +22,7 @@ export function BalanceCard({
   infoTitle = "Learn More",
   className,
   testId = "balance-card",
+  amountClass,
 }: BalanceCardProps) {
   return (
     <div data-testid={testId}>
@@ -32,14 +34,19 @@ export function BalanceCard({
         >
           <CardTitle className="text-sm font-normal text-gray-500 gap-2 flex flex-col">
             {title}
-            <div className="text-xl md:text-2xl font-bold text-black">
+            <div
+              className={cn(
+                "text-xl md:text-[28px] font-bold text-black",
+                amountClass
+              )}
+            >
               {amount}
             </div>
           </CardTitle>
           {showWithdraw && (
             <Button
               variant="default"
-              className="rounded-full bg-gray-900 hover:bg-gray-800 px-10 py-6 cursor-pointer"
+              className="rounded-full text-base bg-gray-900 hover:bg-gray-800 px-10 py-6 cursor-pointer"
             >
               Withdraw
             </Button>
